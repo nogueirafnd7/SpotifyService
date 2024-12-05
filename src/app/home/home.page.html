@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-center ion-align-items-center ion-margin-bottom"
+      style="width: 100%; margin-top: 10px;">
+      <ion-col size="12">
+        <h1>Sejam bem vind&#64;s à minha API do <span>&nbsp;Spotify</span> </h1>
+      </ion-col>
+      <ion-col size="8">
+        <ion-input class="input" fill="outline" type="text" placeholder="Digite o nome do artista"
+          [(ngModel)]="artistName" (keyup.enter)="searchArtist()"></ion-input>
+      </ion-col>
+      <ion-col size="1">
+        <ion-button class="search" expand="rounded" color="success" (click)="searchArtist()">
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="!artists || artists.length === 0" class="intro-text">
+
+    <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
+      <ion-col size="7">
+        <p class="text-deafult">
+          Este sistema permite que você busque informações detalhadas de artistas utilizando a API do <span>Spotify</span>.
+          Digite o nome do artista na barra de pesquisa acima e pressione <span>Enter</span> ou clique no <span>ícone de busca</span>.
+        </p>
+      </ion-col>
+    </ion-row>
+
+
+
+  </div>
+
+  <!-- Lista de Artistas -->
+  <ion-row class="ion-justify-content-center ion-align-items-center">
+    <ion-col size="8">
+      <div *ngIf="artists && artists.length > 0">
+        <ion-card id="artist-box" *ngFor="let artist of artists.slice(0, 3)">
+          <ion-card-content>
+            <ion-row>
+              <!-- Imagem do Artista -->
+              <ion-col size="4">
+                <div class="artist-image" [ngStyle]="{
+                    'background-image': artist.image
+                      ? 'url(' + artist.image + ')'
+                      : 'none'
+                  }"></div>
+              </ion-col>
+
+              <!-- Informações do Artista -->
+              <ion-col size="8">
+                <ion-card-title>{{ artist.name }}</ion-card-title>
+                <ion-card-subtitle>
+                  <ion-row>
+                    <ion-col size="12">
+                      <b>Gênero:</b> {{ artist.genre || 'Desconhecido' }}
+                    </ion-col>
+                    <ion-col size="12">
+                      <b> Seguidores:</b> {{ artist.followers }}
+                    </ion-col>
+                    <ion-col size="12">
+                      <b> Popularidade: </b> {{ artist.popularity }}%
+                    </ion-col>
+                  </ion-row>
+                </ion-card-subtitle>
+
+              </ion-col>
+            </ion-row>
+
+            <!-- Músicas Mais Tocadas -->
+            <h1>Músicas Mais Tocadas:</h1>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="3" *ngFor="let track of artist.topTracks">
+                  <ion-card class="track-img">
+                    <ion-img [src]="track.image || placeholderImage" alt="Capa da música"></ion-img>
+                    <ion-card-content>
+                      <p>{{ track.name | slice:0:25 }}{{ track.name.length > 30 ? '...' : '' }}</p>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+
+            <!-- Álbuns -->
+            <h1>Álbuns:</h1>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="3" *ngFor="let album of artist.albums">
+                  <ion-card class="album-img">
+                    <ion-img [src]="album.image || placeholderImage" alt="Capa do álbum"></ion-img>
+                    <ion-card-content>
+                      <p>{{ album.name | slice:0:20 }}{{ album.name.length > 30 ? '...' : '' }}</p>
+                      <p style="font-weight: bold;">{{ album.releaseDate }}</p>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

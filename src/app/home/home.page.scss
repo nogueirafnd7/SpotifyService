@@ -1,0 +1,101 @@
+.artist-image {
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  aspect-ratio: 1 / 1;
+  outline: 0.5px solid #1DB954
+
+}
+
+.track-img, .album-img{
+  outline:0.5px #181818;
+  background-color: #3edf7635;
+  color: white;
+}
+
+.track-img p, .album-img p{
+ font-size: 16px;
+}
+
+#artist-box{
+  background-color: #191414;
+  color: #1DB954;
+  font-weight: 600;
+  outline: 0.5px solid #1DB954;
+}
+
+ion-card {
+  margin-bottom: 20px;
+}
+
+h1{
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  color: #1DB954;
+}
+
+ion-card-title{
+  font-size: 28px;
+  margin: 10px;
+  color:#1DB954;
+  font-weight: 700;
+}
+
+ion-card-subtitle{
+  font-size: 18px;
+  margin: 10px;
+  display: flex;
+  color: rgb(255, 255, 255);
+}
+
+ion-card-subtitle b{
+  color: #1DB954;
+}
+
+ion-card-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ion-card-content li {
+  margin-bottom: 5px;
+  padding-left: 10px;
+  position: relative;
+}
+
+ion-card-content li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--ion-color-success);
+  font-size: 18px;
+}
+
+.input{
+  scale: 0.9;
+  margin-left: 52px;
+  font-size: 18px;
+
+  }
+
+  .search{
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+
+  .text-deafult{
+    font-size: 28px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+
+
+
+

@@ -1,0 +1,7 @@
+{
+  "name": "SpotifyService",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
